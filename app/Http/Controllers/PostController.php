@@ -1,8 +1,6 @@
 <?php
-
 namespace App\Http\Controllers;
 use App\Repositories\Contracts\RepositoryInterface;
-
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
 
@@ -25,12 +23,14 @@ class PostController extends Controller
     }
 
     public function createPost(PostRequest $request){
-    	$this->postRepository->create($request);
+    	$attributes = $request->all();
+    	$this->postRepository->create($attributes);
     	return back()->with('status','Post created successfully !');
     }
 
     public function updatePost(PostRequest $request,$id){
-    	$post = $this->postRepository->update($id,$request);
+    	$attributes = $request->all();
+    	$post = $this->postRepository->update($id,$attributes);
     	return redirect()->back()->with('status','Post has been updated successfully !');
     }
     public function deletePost($id){

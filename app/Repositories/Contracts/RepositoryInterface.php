@@ -1,15 +1,14 @@
 <?php 
 namespace App\Repositories\Contracts;
-use Illuminate\Http\Request;
 interface RepositoryInterface {
 
 	public function all();
 
 	public function find($id);
 
-	public function create(Request $request);
+	public function create(array $attributes);
 
-	public function update($id,Request $request);
+	public function update($id,array $attributes);
 
 	public function delete($id);
 }
