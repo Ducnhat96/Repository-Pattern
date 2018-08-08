@@ -24,7 +24,7 @@
 					</div>
 				@endif
 
-				<form class="form-vertical" role="form" method="post" action="/post">
+				<form class="form-vertical" role="form" method="post" action="">
 					@csrf
 					<fieldset class="form-group">
 						<label for="formGroupExampleInput">Title Post</label>
@@ -54,12 +54,12 @@
 						<tr>
 							<td>{{$post->title}}</td>
 							<td>{{$post->content}}</td>
-							<form action="{{route('edit.post',$post->id)}}" method="get">
+							<form action="{{ asset('posts') }}/{{$post->id}}" method="GET">
 								<td>
-									<p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-success btn-xs"><span class="fa fa-pencil fa-fw"></span></button></p>
+									<p data-placement="center" data-toggle="tooltip" title="Edit"><button class="btn btn-success btn-xs"><span class="fa fa-pencil fa-fw"></span></a>
 								</td>
 							</form>
-							<form action="{{route('destroy.post',$post->id)}}" method="post">
+							<form action="{{ asset('posts') }}/{{$post->id}}" method="POST">
 								@csrf
 								@method('DELETE')
 								<td>

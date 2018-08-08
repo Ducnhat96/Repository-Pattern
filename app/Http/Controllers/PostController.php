@@ -1,6 +1,6 @@
 <?php
 namespace App\Http\Controllers;
-use App\Repositories\Contracts\RepositoryInterface;
+use App\Repositories\Posts\PostRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
 
@@ -8,33 +8,42 @@ class PostController extends Controller
 {
 	protected $postRepository;
 
-    public function __construct(RepositoryInterface $postRepository){
+    public function __construct(PostRepositoryInterface $postRepository){
     	$this->postRepository = $postRepository;
     }
 
-    public function getAllPost(){
-    	$posts = $this->postRepository->all();
+    public function index(){
+    	$posts = $this->postRepository->index();
     	return view('index',compact('posts'));
     }
 
-    public function findById($id){
-    	$post = $this->postRepository->find($id);
+    public function create(){
+
+    }
+
+    public function show($id){
+    	$post = $this->postRepository->show($id);
     	return view('edit',compact('post'));
     }
 
-    public function createPost(PostRequest $request){
+    public function store(PostRequest $request){
     	$attributes = $request->all();
-    	$this->postRepository->create($attributes);
+    	$this->postRepository->store($attributes);
     	return back()->with('status','Post created successfully !');
     }
 
-    public function updatePost(PostRequest $request,$id){
+    public function edit($id){
+
+    }
+
+    public function update(PostRequest $request,$id){
     	$attributes = $request->all();
     	$post = $this->postRepository->update($id,$attributes);
     	return redirect()->back()->with('status','Post has been updated successfully !');
     }
-    public function deletePost($id){
-    	$this->postRepository->delete($id);
+
+    public function destroy($id){
+    	$this->postRepository->destroy($id);
     	return back()->with(['status'=>'Deleted successfully']);
     }
 }

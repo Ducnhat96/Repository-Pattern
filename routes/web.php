@@ -11,12 +11,15 @@
 |
 */
 
-Route::get('/','PostController@getAllPost');
+// Route::get('/','PostController@getAllPost');
 
-Route::get('/post/{id}','PostController@findById')->name('edit.post');
+// Route::get('/post/{id}','PostController@findById')->name('edit.post');
 
-Route::post('/post','PostController@createPost');
+// Route::post('/post','PostController@createPost');
 
-Route::put('/post/{id}','PostController@updatePost')->name('update.post');
+// Route::put('/post/{id}','PostController@updatePost')->name('update.post');
 
-Route::delete('/post/{id}','PostController@deletePost')->name('destroy.post');
+// Route::delete('/post/{id}','PostController@deletePost')->name('destroy.post');
+// 
+Route::resource('posts','PostController');
+

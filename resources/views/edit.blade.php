@@ -24,7 +24,7 @@
 					</div>
 				@endif
 
-				<form class="form-vertical" role="form" method="post" action="{{route('update.post',$post->id)}}">
+				<form class="form-vertical" role="form" method="post" action="">
 					@csrf
 					@method('PUT')
 					<fieldset class="form-group">
