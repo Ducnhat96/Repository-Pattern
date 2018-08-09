@@ -13,7 +13,7 @@ class PostController extends Controller
     }
 
     public function index(){
-    	$posts = $this->postRepository->index();
+    	$posts = $this->postRepository->getAddTitleCategory();
     	return view('index',compact('posts'));
     }
 

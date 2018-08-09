@@ -46,6 +46,7 @@
 							<th>Title</th>
 							<th>Content</th>
 							<th>Edit</th>
+							<th>Category</th>
 							<th>Delete</th>
 						</tr>
 					</thead>
@@ -54,6 +55,7 @@
 						<tr>
 							<td>{{$post->title}}</td>
 							<td>{{$post->content}}</td>
+							<td>{{$post->category->title}}</td>
 							<form action="{{ asset('posts') }}/{{$post->id}}" method="GET">
 								<td>
 									<p data-placement="center" data-toggle="tooltip" title="Edit"><button class="btn btn-success btn-xs"><span class="fa fa-pencil fa-fw"></span></a>
